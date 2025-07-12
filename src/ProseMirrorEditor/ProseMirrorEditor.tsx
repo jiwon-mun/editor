@@ -41,9 +41,19 @@ export default function ProseMirrorEditor() {
     };
   }, []);
 
+  const saveDocument = () => {
+    if (!view) return;
+    const json = view.state.doc.toJSON();
+    localStorage.setItem("prosemirror-doc", JSON.stringify(json));
+    alert("문서가 localStorage에 저장되었습니다!");
+  };
+
   return (
     <>
       <Toolbar editorView={view} editorState={editorState} />
+      <button onClick={saveDocument} style={{ marginBottom: 8 }}>
+        저장하기
+      </button>
       <div
         onClick={() => {
           view?.focus();

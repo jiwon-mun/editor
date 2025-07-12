@@ -92,3 +92,9 @@ textarea:not([rows]) {
 .ProseMirror:focus {
   outline: none;
 }
+a.prosemirror-image-link {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  text-decoration: none;
+}
