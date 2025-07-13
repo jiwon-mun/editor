@@ -42,3 +42,44 @@
   cursor: pointer;
 }
 
+
+
+/* 미리보기 카드 */
+.preview-card {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 8px 0;
+  text-decoration: none;
+  font-size: 14px;
+  background: #fafafa;
+}
+
+.preview-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.preview-content {
+  padding: 8px;
+  flex: 1;
+}
+
+.preview-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.preview-description {
+  color: #555;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.preview-card a {
+  color: #007bff;
+  font-size: 12px;
+  word-break: break-all;
+}

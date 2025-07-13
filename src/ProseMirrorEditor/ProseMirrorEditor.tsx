@@ -6,6 +6,8 @@ import { keymap } from "prosemirror-keymap";
 import { Toolbar } from "./Toolbar";
 import { customSchema } from "./schema";
 import { ImageNodeView } from "./nodeview/ImageNodeView";
+import { PreviewNodeView } from "./nodeview/PreviewNodeView";
+import { linkPastePlugin } from "./linkPastePlugin";
 
 export default function ProseMirrorEditor() {
   const [view, setView] = useState<EditorView | null>(null);
@@ -18,13 +20,14 @@ export default function ProseMirrorEditor() {
 
     const state = EditorState.create({
       schema: customSchema,
-      plugins: [keymap(baseKeymap)],
+      plugins: [keymap(baseKeymap), linkPastePlugin],
     });
 
     const view = new EditorView(editorRef.current, {
       state,
       nodeViews: {
         image: (node, view, getPos) => new ImageNodeView(node, view, getPos),
+        preview: (node) => new PreviewNodeView(node),
       },
       dispatchTransaction(transaction) {
         const newState = view.state.apply(transaction);
